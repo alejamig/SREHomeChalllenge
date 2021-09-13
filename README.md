@@ -6,14 +6,19 @@ Docuemntation used for the isntallationa and configuration for kubernates cluste
 Kubernates blog:
 https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
 
-Cloud provider Digital Ocean:
-Image: Ubuntu 20.01
-
-Files:
+*Cloud provider Digital Ocean:
+*Image: Ubuntu 20.01
+*Files:
+ * vagrant
+ * master-playbook.yml
+ * node-playbook.yml
 
 
 Task summary:
-My first option for this taks was to use Oracle cloud Infraestrucure provider, Since I have many issues to use Vagrant and Virtual, the iiseu was realted to virtualization on the Oracle images, spend almost 2 days(5 hours) searching for a solution, the issue was on the amd virtualization and the workaround was to change son configs in the kernel, which is not allowed on the OCI image.I decide to move to another provider, I foudn digital Ocean give 100$ credit, I create a same ubuntu image and proceed to follow up the steps on the blog.
+My first option for this taks was to use Oracle cloud Infraestrucure provider, Since I have many issues to use Vagrant and Virtual, the isue was realted to virtualization on the Oracle images, spend almost 2 days(5 hours) searching for a solution, the issue was on the amd virtualization and the workaround was to change son configs in the kernel, which is not allowed on the OCI image.I decide to move to another provider, I foudn digital Ocean give 100$ credit, I create a same ubuntu image and proceed to follow up the steps on the blog.
+
+## issues using OCI provider
+On oracle provider I had issues using virtual box since on the boot step for the vagrant intance fails due to some issues on the virtualization on the ubuntu images which not was enabled. realize I was spending many days troubleshoting and move out to another option (ocean provider). 
 
 ## Issues to initiate K8 cluster with kubeadmin command
 I had issues to execute kubeadmin to be able to create the kuberbate kluster, on line:
@@ -22,11 +27,11 @@ The command fails due to kubelet did not start, for more detials you can see err
 https://github.com/alejamig/SREHomeChalllenge/blob/main/kubeadm_error_log
 
 ###### Added  remove swap on /etc/fstab
-Searching on blog for the erro on thew logs I found the workaround to remove the swap on lines:
+Searching on blogs for the erros on the logs I found a workaround to remove the swap on lines:
 https://github.com/alejamig/SREHomeChalllenge/blob/main/miguelProjectK8s/kubernetes-setup/master-playbook.yml#L55
 https://github.com/alejamig/SREHomeChalllenge/blob/main/miguelProjectK8s/kubernetes-setup/master-playbook.yml#L61
 
-Those new additions did not resolve the issue
+Those new additions did not resolve the issue.
 
 ###### ssh to k8s-master
 I tried to excute manula the kube admin command:
