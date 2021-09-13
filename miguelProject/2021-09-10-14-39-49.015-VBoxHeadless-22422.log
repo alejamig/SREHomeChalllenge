@@ -1,0 +1,12 @@
+Log created: 2021-09-10T14:39:49.155546000Z
+Process ID:  22422 (0x5796)
+Parent PID:  1 (0x1)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: miguelProject_k8s-master_1631245816516_60969
+Arg[3]: --startvm
+Arg[4]: 09f66db6-35ed-4a2a-b655-b3b4e4d0d7ce
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2
