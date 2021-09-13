@@ -53,7 +53,10 @@
       #- none
 
   - name: remove swap file
-    command: sudo sed -i '/ swap / s/^/#/' /etc/fstab
+    lineinfile:
+      dest: /etc/fstab
+      regexp: '^/[\S]+\s+none\s+swap '
+      state: absent
 
   - name: Disable swap
     command: sudo swapoff -a
