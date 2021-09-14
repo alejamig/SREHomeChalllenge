@@ -59,7 +59,7 @@
       state: absent
 
   - name: Disable swap
-    command: sudo swapoff -a
+    command: swapoff -a
     when: ansible_swaptotal_mb > 0
 
   - name: Add an apt signing key for Kubernetes
@@ -97,7 +97,7 @@
       state: restarted
 
   - name: Initialize the Kubernetes cluster using kubeadm
-    command: sudo kubeadm init --apiserver-advertise-address="192.168.50.10" --apiserver-cert-extra-sans="192.168.50.10"  --node-name k8s-master --pod-network-cidr=192.168.0.0/16 --v=5 
+    command: kubeadm init --apiserver-advertise-address="192.168.50.10" --apiserver-cert-extra-sans="192.168.50.10"  --node-name k8s-master --pod-network-cidr=192.168.0.0/16 --v=5 
 
   - name: Setup kubeconfig for vagrant user
     command: "{{ item }}"
@@ -108,10 +108,10 @@
 
   - name: Install calico pod network
     become: false
-    command: sudo kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
+    command: kubectl create -f https://docs.projectcalico.org/v3.4/getting-started/kubernetes/installation/hosted/calico.yaml
 
   - name: Generate join command
-    command: sudo kubeadm token create --print-join-command
+    command: kubeadm token create --print-join-command
     register: join_command
 
   - name: Copy join command to local file
