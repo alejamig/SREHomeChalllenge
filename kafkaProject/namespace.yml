@@ -1,0 +1,6 @@
+---
+- hosts: myhost 
+  tasks:
+    - name: Create a k8s namespace.
+      become: false
+      command: kubectl apply -f ~/SREHomeChalllenge/kafkaProject/00-namespace.yml 
